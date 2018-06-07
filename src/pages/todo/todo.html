@@ -1,0 +1,22 @@
+<ion-header >
+  <ion-navbar color="Indigoo">
+    <ion-title><ion-icon name="arrow-round-back"></ion-icon>
+      Scrum Working
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="pane" style="padding: 8px;">
+  <ion-card *ngFor="let row of todoposts">
+    <font size="4">{{row.message.substring(6)}}</font>
+  </ion-card>
+</ion-content>
+
+<style type="text/css">
+  .pane{
+    background:url('assets/imgs/backghome.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+</style>

@@ -1,0 +1,116 @@
+<ion-header >
+  <ion-navbar color="Indigoo">
+    <ion-title *ngIf="!isSearchberOpened">
+      Scrum Working
+    </ion-title>
+    <ion-searchbar *ngIf="isSearchberOpened" showCancelButton="true" (search)="onSearch($event)" (ionCancel)="isSearchberOpened=false"></ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="!isSearchberOpened" (click)="isSearchberOpened=true">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="pane">
+    <div *ngIf="ShowTodo">
+      <div align="center"><br>
+        <font size="6" color="#FFFFFF"><b>Todo</b></font>
+      </div>
+      <ion-card *ngFor="let row of paramitor">
+        <div *ngIf="row.status == 'ยังไม่ได้ทำ'">
+          <div style="padding-left:5%; padding-top:5%; padding-bottom:5%; padding-right:5%;">
+            <font size="5">{{row.sage.substring(6)}}</font><br>
+            <font size="4">Date Post : {{row.time.substring(0,10)}}</font><br>
+            <div align="center">
+              <font size="4"> ------------ Comments ------------ </font>
+            </div>
+            <font size="4">{{row.showcomments}}</font><br>
+          </div>
+        </div>
+      </ion-card>
+    </div>
+
+  <div *ngIf="ShowInprogress">
+    <div align="center"><br>
+      <font size="6" color="#FFFFFF"><b>In Progress</b></font>
+    </div>
+    <ion-card *ngFor="let row of paramitor">
+      <div *ngIf="row.status == 'กำลังทำ'">
+        <div style="padding-left:5%; padding-top:5%; padding-bottom:5%; padding-right:5%;">
+          <div *ngIf="row.progressdate >= row.datenew" align="right">
+            <font color="#00FF00">Ontime</font>
+          </div>
+          <div *ngIf="row.progressdate < row.datenew" align="right">
+            <font color="#FF0000">Delayed</font>
+          </div>
+          <font size="5">{{row.sage.substring(6)}}</font><br>
+          <font size="4">Date Start : {{row.timestart}}</font><br>
+          <font size="4">{{row.deadline}}</font><br>
+          <font size="4">{{row.name}}</font><br>
+          <font size="4">{{row.duty}}</font><br>
+          <div align="center">
+            <font size="4"> ------------ Comments ------------ </font>
+          </div>
+          <font size="4">{{row.showcomments}}</font><br>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+
+  <div *ngIf="ShowDone">
+    <div align="center"><br>
+      <font size="6" color="#FFFFFF"><b>Done</b></font>
+    </div>
+    <ion-card *ngFor="let row of paramitor">
+      <div *ngIf="row.status == 'ทำเสร็จแล้ว'">
+        <div style="padding-left:5%; padding-top:5%; padding-bottom:5%; padding-right:5%;">
+          <div *ngIf="row.progressdate >= row.donedate" align="right">
+            <font color="#00FF00">Ontime</font>
+          </div>
+          <div *ngIf="row.progressdate < row.donedate" align="right">
+            <font color="#FF0000">Delayed</font>
+          </div>
+          <font size="5">{{row.sage.substring(6)}}</font><br>
+          <font size="4">Date End : {{row.timeend}}</font><br>
+          <font size="4">{{row.deadline}}</font><br>
+          <font size="4">{{row.name}}</font><br>
+          <font size="4">{{row.duty}}</font>
+          <div align="center">
+            <font size="4"> ------------ Comments ------------ </font>
+          </div>
+          <font size="4">{{row.showcomments}}</font><br>
+        </div>
+      </div>
+    </ion-card>
+  </div>
+</ion-content>
+<ion-footer class="aever-footer">
+  <!-- <button ion-button (click)="Show(0)"> Todo </button>
+  <button ion-button (click)="Show(1)"> In Progress </button>
+  <button ion-button (click)="Show(2)"> Done </button> -->
+  <ion-row>
+    <ion-col col-4>
+      <button ion-button (click)="Show(0)" style="width:100%"> Todo </button>
+    </ion-col>
+    <ion-col col-4>
+      <button ion-button (click)="Show(1)" style="width:100%"> In Progress </button>
+    </ion-col>
+    <ion-col col-4>
+      <button ion-button (click)="Show(2)" style="width:100%"> Done </button>
+    </ion-col>
+  </ion-row>
+</ion-footer>
+
+<style type="text/css">
+  .pane{
+    background:url('assets/imgs/backghome.jpg') no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+  }
+  .aever-footer {
+    padding: 0em;
+    background-color: #8699d1;
+  }
+</style>

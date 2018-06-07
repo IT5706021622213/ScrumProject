@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      User Post Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content style="padding: 8px;">
+  <ion-card *ngFor="let row of page_data">
+    <ion-card-header>
+      {{row.message}}
+    </ion-card-header>
+    <ion-card-content>
+      Story : {{row.story}}
+      <br>
+      ID :{{row.id}}
+      <br>
+      Time : {{row.created_time}}
+    </ion-card-content>
+  </ion-card>
+</ion-content>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Group Page Details
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content >
+  <ion-card *ngFor="let row of group_data">
+    <ion-card-header>
+      {{row.message}}
+    </ion-card-header>
+    <ion-card-content>
+      {{row.story}}
+      <div>{{row.created_time}}</div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
